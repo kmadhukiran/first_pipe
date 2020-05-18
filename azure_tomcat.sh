@@ -25,8 +25,8 @@ pipeline {
     stage ('Creation NSG Rule') {
       steps {
 	     sh 'az network nsg rule create --resource-group Atmecs_devops --nsg-name Atmecs_devops_NSG --name Atmecs_devops_NSG_rule --protocol Tcp --priority 1000 --destination-port-range 22'
-	     sh 'az network nsg rule create --resource-group Atmecs_devops --nsg-name Atmecs_devops_NSG --name Atmecs_devops_NSG_rule --priority 1000 --source-address-prefixes VirtualNetwork --destination-port-ranges 80 8080 --direction Inbound --access Allow --protocol Tcp --description "Allow VirtualNetwork to Storage".'
-	     sh 'az network nsg rule create --resource-group Atmecs_devops --nsg-name Atmecs_devops_NSG --name Atmecs_devops_NSG_rule --protocol Tcp --priority 1000 --destination-port-range 8081'
+	     sh 'az network nsg rule create --resource-group Atmecs_devops --nsg-name Atmecs_devops_NSG --name Atmecs_devops_NSG_rule --priority 300 --source-address-prefixes VirtualNetwork --destination-port-ranges 8080 --direction Inbound --access Allow --protocol Tcp --description "Allow VirtualNetwork to Storage".'
+	     sh 'az network nsg rule create --resource-group Atmecs_devops --nsg-name Atmecs_devops_NSG --name Atmecs_devops_NSG_rule --protocol Tcp --priority 320 --destination-port-range 8081'
       }
     }
     stage ('IP enabling and login') {
