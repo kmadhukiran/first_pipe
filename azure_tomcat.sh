@@ -39,7 +39,7 @@ pipeline {
               sudo -S <<< "Atmecs@123456" yum install java 1.8* -y
               sudo -S <<< "Atmecs@123456" wget http://apachemirror.wuchna.com/tomcat/tomcat-9/v9.0.31/bin/apache-tomcat-9.0.31.tar.gz
               sudo -S <<< "Atmecs@123456" tar -xzvf apache-tomcat-9.0.31.tar.gz
-              sudo -S <<< "Atmecs@123456" /home/atmecs/apache-tomcat-9.0.31/bin/startup.sh
+              sudo -S <<< "Atmecs@123456" systemctl start tomcat
               sudo -S <<< "Atmecs@123456" ps -ef|grep tomcat
               exit
               ENDSSH
