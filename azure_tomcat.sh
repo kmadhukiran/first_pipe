@@ -33,7 +33,7 @@ pipeline {
       steps {
 	     git credentialsId: 'jenkins', url: 'https://github.com/kmadhukiran/Devops_new.git'
               sh '''
-              ip=$(az vm show --resource-group Atmecs_devops --name Atmecs_devops_vm -d --query [publicIps] --o tsv)
+              ip=$(az vm show --resource-group Atmecs_devops --name Atmecs_devops_vm -d --query [publicIps] --output tsv)
               sshpass -p 'Atmecs@123456' ssh -t -t -o StrictHostKeyChecking=no atmecs@$ip << 'ENDSSH'
               sudo -S <<< "Atmecs@123456" yum update -y
               sudo -S <<< "Atmecs@123456" yum install java 1.8* -y
