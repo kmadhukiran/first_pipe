@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage ('Login') {
       steps {
-        sh 'az login --service-principal -u  6f2347da-e00b-41d0-8738-61db97dec0eb -p    e31d59f9-6c43-4c96-8586-e5f8e524fb0c --tenant   6b94bb78-d3ab-45ee-a0d0-468e38a6057d'
+        sh 'az login --service-principal -u  9793ee19-4016-47ca-b68f-c0aa1d44b3c0 -p 36c253a4-e406-49b5-8a91-b638920517bf --tenant fa8261cb-9a47-424a-8328-011cf9c6482d'
       }
     }
     
