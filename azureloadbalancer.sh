@@ -26,7 +26,7 @@ pipeline {
     }
     stage ('Creating LB') {
       steps {
-	     sh 'az az network lb create \
+	     sh 'az network lb create \
                --resource-group Azure \
                --name myLoadBalancer \
                --public-ip-address myPublicIP \
