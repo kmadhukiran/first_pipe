@@ -104,19 +104,11 @@ pipeline {
     --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
-done'
-}
-}
-    stage('Availability zone'){
-    steps{
-    sh 'az vm availability-set create \
+    done
+    az vm availability-set create \
    --resource-group Azure \
-   --name myAvailabilitySet'
-   }
-}
+   --name myAvailabilitySet
 for i in `seq 1 2`; do
-stage ('Creating VM'){
-steps{
     az vm create \
    --resource-group Azure \
    --name myVM$i \
@@ -127,7 +119,7 @@ steps{
    --admin-password nisum@123456789 \
    --generate-ssh-keys \
  az vm open-port --port 22 --resource-group Azure --name myVM$i
-done '
+done 
       }
     }
  }
