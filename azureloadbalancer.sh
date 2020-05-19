@@ -93,9 +93,9 @@ pipeline {
 }
     stage ('IP enabling and login') {
       steps {
-              sh '''
-              for i in `seq 1 2`; do
-  az network nic create \
+      sh '
+      for i in `seq 1 2`; do
+      az network nic create \
     --resource-group Azure \
     --name myNic$i \
     --vnet-name myVnet \
@@ -104,16 +104,20 @@ pipeline {
     --network-security-group myNetworkSecurityGroup \
     --lb-name myLoadBalancer \
     --lb-address-pools myBackEndPool
-done
-
-# Create an Availability set
-az vm availability-set create \
+done'
+}
+}
+    stage('Availability zone'){
+    steps{
+    sh 'az vm availability-set create \
    --resource-group Azure \
-   --name myAvailabilitySet
-
-# Create the virtual machines
+   --name myAvailabilitySet'
+   }
+}
 for i in `seq 1 2`; do
- az vm create \
+stage ('Creating VM'){
+steps{
+    az vm create \
    --resource-group Azure \
    --name myVM$i \
    --availability-set myAvailabilitySet \
@@ -123,7 +127,7 @@ for i in `seq 1 2`; do
    --admin-password nisum@123456789 \
    --generate-ssh-keys \
  az vm open-port --port 22 --resource-group Azure --name myVM$i
-done '''
+done '
       }
     }
  }
