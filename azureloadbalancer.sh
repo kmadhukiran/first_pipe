@@ -93,8 +93,7 @@ pipeline {
 }
     stage ('IP enabling and login') {
       steps {
-      sh '
-      for i in `seq 1 2`; do
+      sh' for i in `seq 1 2`; do
       az network nic create \
     --resource-group Azure \
     --name myNic$i \
@@ -119,7 +118,7 @@ for i in `seq 1 2`; do
    --admin-password nisum@123456789 \
    --generate-ssh-keys \
  az vm open-port --port 22 --resource-group Azure --name myVM$i
-done 
+done'
       }
     }
  }
